@@ -1,0 +1,16 @@
+.info{
+  display: flex;
+}
+
+@media screen and (max-device-width:939px){
+  .info{
+    flex-direction: column
+  } 
+}
+
+
+@media screen and (min-device-width:940px){
+  .info{
+    flex-direction: row
+  } 
+}

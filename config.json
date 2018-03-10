@@ -1,0 +1,22 @@
+{
+  "UrlClient" :"http://127.0.0.1:3001",
+  "UrlApi": "http://127.0.0.1:3000",
+  "api":{
+    "getListDestination": "/destination",
+    "addMessage": "/msg/add",
+    "getMessage": "/msg/", 
+    "addFile": "/file/",
+    "getFiles":"/files/",
+    "getDownloadFile":"/download/"
+  },
+  "dateOptions": {
+    "year": "numeric",
+    "month": "long",
+    "day": "numeric",
+    "weekday": "long",
+    "timezone": "UTC",
+    "hour": "numeric",
+    "minute": "numeric",
+    "second": "numeric"
+  }
+}
