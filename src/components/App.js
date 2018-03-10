@@ -2,6 +2,7 @@ import React from 'react';
 import Type from 'prop-types';
 import fetch from 'node-fetch';
 import config from '../../config.json';
+import { convertDate } from '../helpers/index';
 
 import './App.css';
 
@@ -43,20 +44,21 @@ export default class App extends React.Component {
     fetch(`${config.UrlApi}${config.api.getMessage}${this.props.idmsg}`)
       .then(res => {
         if (res.status !== 200) {
-          console.log(`Oooops some problen. Statuc code: ${res.status}`);
+          console.log(`Oooops some problem. Status code: ${res.status}`);
           return;
         }
         return res.json();
       })
       .then(json => {
         this.setState({
-          date: json.date,
+          date: convertDate(json.date),
           destination: json.destination,
           email:json.email,
           message:json.message,
           name:json.name,
           phone:json.phone
         });
+        console.log(json);
         return json;
       })
       .catch(e => {
@@ -65,7 +67,7 @@ export default class App extends React.Component {
     fetch(`${config.UrlApi}${config.api.getFiles}${this.props.idmsg}`)
       .then(res => {
         if (res.status !== 200) {
-          console.log(`Oooops some problen. Statuc code: ${res.status}`);
+          console.log(`Oooops some problem. Status code: ${res.status}`);
           return;
         }
         return res.json();

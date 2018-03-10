@@ -1,7 +1,7 @@
 .show {
   visibility: visible;
   opacity: 1;
-  transition: visibility 1s, opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: visibility 0.7s, opacity 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .hide {
   visibility: hidden;
