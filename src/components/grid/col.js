@@ -13,8 +13,8 @@ export default class Col extends React.Component {
   render() {
     return (
       <div className={`col ${this.props.md !== undefined ? `col-md-${this.props.md}` : ''}
-       ${this.props.s !== undefined ? `col-s-${this.props.s}` : ''}
-        ${this.props.align !== undefined ? this.props.align : ''}`}
+       ${this.props.s !== undefined ? `col-s-${this.props.s}` : ''} 
+       ${this.props.align !== undefined ? this.props.align : ''}`}
       >
         {this.props.children}
       </div>

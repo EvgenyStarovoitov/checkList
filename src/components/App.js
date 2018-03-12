@@ -2,7 +2,6 @@ import React from 'react';
 import Type from 'prop-types';
 import fetch from 'node-fetch';
 import config from '../../config.json';
-import { convertDate } from '../helpers/index';
 
 import './App.css';
 
@@ -10,9 +9,9 @@ import Button from 'arui-feather/button';
 
 import Info from './info/index';
 import CommentForm from './commentForm/index';
-import { Container, Row, Col } from './grid/index';
 import AttachedFiles from './attachedFiles/index';
 import TextMessage from './textMessage/index';
+import { Grid } from 'react-flexbox-grid';
 
 export default class App extends React.Component {
   static propTypes = {
@@ -24,7 +23,7 @@ export default class App extends React.Component {
 
   static defaultProps = {
     idmsg: '1c8773eec'
-  }
+  };
 
   state = {
     idmsg:this.props.idmsg,
@@ -51,14 +50,13 @@ export default class App extends React.Component {
       })
       .then(json => {
         this.setState({
-          date: convertDate(json.date),
+          date: this.convertDate(json.date),
           destination: json.destination,
           email:json.email,
           message:json.message,
           name:json.name,
           phone:json.phone
         });
-        console.log(json);
         return json;
       })
       .catch(e => {
@@ -82,6 +80,9 @@ export default class App extends React.Component {
       });
   }
 
+  componentWillReceiveProps(nextProps) {
+  }
+
   handleShowMessage = () => {
     this.setState({
       showResponse: !this.state.showResponse,
@@ -89,9 +90,15 @@ export default class App extends React.Component {
     });
   };
 
+  convertDate = (date) => {
+    const utcDate = new Date(date);
+
+    return utcDate.toLocaleDateString('en-GB', config.dateOptions);
+  };
+
   renderCheckList = () => {
     return (
-      <Container>
+      <Grid>
         <Info
           link={`${config.UrlApi}${config.api.getMessage}${this.props.idmsg}`}
           idmsg={this.state.idmsg}
@@ -107,28 +114,23 @@ export default class App extends React.Component {
         <AttachedFiles
           files={this.state.files}
         />
-        <hr />
-        <Row>
-          <Col md={12} align='center'>
-            <Button
-              onClick={this.handleShowMessage}
-              width='available'
-            >
-              {!this.state.showCommentForm ? 'Добавить комментарий' : 'Скрыть'}
-            </Button>
-          </Col>
-        </Row>
-      </Container>
+        <Button
+          onClick={this.handleShowMessage}
+          width='available'
+        >
+          {!this.state.showCommentForm ? 'Добавить комментарий' : 'Скрыть'}
+        </Button>
+      </Grid>
     );
-  }
+  };
 
   renderCommentForm = () => {
     return (
-      <Container>
+      <Grid>
         <CommentForm
           onClick={this.handleShowMessage}
         />
-      </Container>
+      </Grid>
     );
   };
 

@@ -2,7 +2,9 @@ import React from 'react';
 import Type from 'prop-types';
 import QRCode from 'qrcode';
 
-import { Row, Col } from '../grid/index';
+// import { Row, Col } from '../grid/index';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
 
 export default class Info extends React.Component {
   static propTypes = {
@@ -45,63 +47,63 @@ export default class Info extends React.Component {
   render() {
     return (
       <div className='info'>
-        {/* <Row align='center'> */}
-        <Col md={3} s={12} align='center'>
-          <canvas className='canvas__box' />
-        </Col>
-        {/* </Row> */}
-        {/* <Row> */}
-        <Col md={9} s={12}>
-          <Row>
-            <Col md={4} s={5}>
-              Обращение:
+        <Grid fluid>
+          <Row start='md' center='xs'>
+            <Col md={3} sm={12} xs={12}>
+              <canvas className='canvas__box' />
             </Col>
-            <Col md={8} s={7}>
-              {this.props.idmsg}
+            <Col md={9} sm={12} xs={12}>
+              <Row start='md' center='xs' className='info__line'>
+                <Col md={4} sm={12} xs={12}>
+                  <p>Обращение:</p>
+                </Col>
+                <Col md={8} sm={12} xs={12}>
+                  <p>{this.props.idmsg}</p>
+                </Col>
+              </Row>
+              <Row start='md' center='xs' className='info__line'>
+                <Col md={4} sm={12} xs={12}>
+                  <p>Дата/Время:</p>
+                </Col>
+                <Col md={8} sm={12} xs={12}>
+                  <p>{this.props.date}</p>
+                </Col>
+              </Row>
+              <Row start='md' center='xs' className='info__line'>
+                <Col md={4} sm={12} xs={12}>
+                  <p>Получатель:</p>
+                </Col>
+                <Col md={8} sm={12} xs={12}>
+                  <p>{this.props.destination}</p>
+                </Col>
+              </Row>
+              <Row start='md' center='xs' className='info__line'>
+                <Col md={4} sm={12} xs={12}>
+                  <p>ФИО:</p>
+                </Col>
+                <Col md={8} sm={12} xs={12}>
+                  <p>{this.props.name}</p>
+                </Col>
+              </Row >
+              <Row start='md' center='xs' className='info__line'>
+                <Col md={4} sm={12} xs={12}>
+                  <p>Email:</p>
+                </Col>
+                <Col md={8} sm={12} xs={12}>
+                  <p>{this.props.email}</p>
+                </Col>
+              </Row>
+              <Row start='md' center='xs' className='info__line'>
+                <Col md={4} sm={12} xs={12}>
+                  <p>Телефон:</p>
+                </Col>
+                <Col md={8} sm={12} xs={12}>
+                  <p>{this.props.phone}</p>
+                </Col>
+              </Row>
             </Col>
           </Row>
-          <Row>
-            <Col md={4} s={5}>
-              Дата/Время:
-            </Col>
-            <Col md={8} s={7}>
-              {this.props.date}
-            </Col>
-          </Row>
-          <Row>
-            <Col md={4} s={5}>
-              Получатель:
-            </Col>
-            <Col md={8} s={7}>
-              {this.props.destination}
-            </Col>
-          </Row>
-          <Row>
-            <Col md={4} s={5}>
-              ФИО:
-            </Col>
-            <Col md={8} s={7}>
-              {this.props.name}
-            </Col>
-          </Row>
-          <Row>
-            <Col md={4} s={5}>
-              Email:
-            </Col>
-            <Col md={8} s={7}>
-              {this.props.email}
-            </Col>
-          </Row>
-          <Row>
-            <Col md={4} s={5}>
-              Телефон:
-            </Col>
-            <Col md={8} s={7}>
-              {this.props.phone}
-            </Col>
-          </Row>
-        </Col>
-        {/* </Row> */}
+        </Grid>
       </div>
     );
   }

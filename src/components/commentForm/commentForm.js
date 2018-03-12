@@ -2,11 +2,11 @@ import React from 'react';
 import Type from 'prop-types';
 // import fetch from 'node-fetch';
 
-import Input from 'arui-feather/input';
 import Button from 'arui-feather/button';
 import Textarea from 'arui-feather/textarea';
 import { default as IconClose  } from 'arui-feather/icon/ui/close';
-import { Row, Col } from '../grid/index';
+// import { Row, Col } from '../grid/index';
+import { Row, Col } from 'react-flexbox-grid';
 
 export default class CommentForm extends React.Component {
   static propTypes = {
@@ -44,41 +44,26 @@ export default class CommentForm extends React.Component {
   render() {
     return (
       <div className={'commentForm'}>
-        <Row>
-          <Col md={12}>
-            <Input
-              width='available'
-              placeholder='Введите ваше имя'
-              onChange={this.handleName}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12}>
+        <Row className='commentForm__formField'>
+          <Col md={12} sm={12} xs={12}>
             <Textarea
               name='message'
               width='available'
               placeholder='Ваше сообщение....'
               onChange={this.handleNote}
               autosize
-              minRows={4}
+              minRows={5}
               maxLength={8192}
             />
           </Col>
         </Row>
-        <Row>
-          <Col md={12}>
+        <Row className='commentForm__formField'>
+          <Col md={12} sm={12} xs={12}>
             <Button
               text='Отправить'
               onClick={this.handleSend}
             />
           </Col>
-          {/* <Col md={6}>
-            <Button
-              text='Скрыть'
-              onClick={this.handleHideClick}
-            />
-          </Col> */}
         </Row>
         <button
           className='commentForm__closeButton'

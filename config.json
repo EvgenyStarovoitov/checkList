@@ -11,12 +11,10 @@
   },
   "dateOptions": {
     "year": "numeric",
-    "month": "long",
+    "month": "numeric",
     "day": "numeric",
-    "weekday": "long",
     "timezone": "UTC",
     "hour": "numeric",
-    "minute": "numeric",
-    "second": "numeric"
+    "minute": "numeric"
   }
 }
